@@ -2,7 +2,6 @@ import { Routes, Route} from "react-router-dom"
 import { lazy, Suspense } from "react";
 
 const HomePage =  lazy(() => import("./pages/HomePage/HomePage"));
-const NotFoundPage =  lazy(() => import("./pages/NotFoundPage"));
 const SingleMoviePage =  lazy(() => import("./pages/SingleMoviePage"));
 const MovieCastPage =  lazy(() => import("./pages/MovieCastPage"));
 const MovieSearchPage =  lazy(() => import("./pages/MovieSearchPage"));
@@ -13,12 +12,13 @@ const UserRoutes = () =>{
         <Suspense fallback={<p>...Loading</p>}>
            <Routes>
                 <Route path="/"  element={<HomePage />}/>
+                <Route path="/goit-react-hw-05-movies"  element={<HomePage />}/>
                 <Route path="/movies"  element={<MovieSearchPage />}/>
                 <Route path="/movies/:movieId"  element={<SingleMoviePage />}>
                 <Route path="cast"  element={<MovieCastPage />}/>
                 <Route path="reviews"  element={<ReviewsPage />}/>
                 </Route>
-                <Route path="*"  element={<NotFoundPage />}/>
+                <Route path="*"  element={<HomePage />}/>
             </Routes> 
         </Suspense>
         
