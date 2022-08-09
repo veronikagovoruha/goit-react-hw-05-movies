@@ -34,7 +34,11 @@ const SingleMoviePage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from || "/";
-    const goBack = () => navigate(from);
+    const goBack = () => {
+        navigate(from);
+    }
+
+    console.log(from)
 
     return(
         <main>
@@ -42,7 +46,7 @@ const SingleMoviePage = () => {
                 {loading && <p>...Loading</p>}
                 {error && <p>Movie not found</p>}
                 {isMovie && <button className={styles.btnBack} type='button' onClick={goBack}>Go back</button>}
-                {isMovie && <SingleMovie movie={movie}/>}
+                {isMovie && <SingleMovie movie={movie} from={{from}}/>}
             </div>
         </main>
     )

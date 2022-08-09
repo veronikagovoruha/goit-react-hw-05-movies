@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import styles from "./single-movie.module.css"
 
 
-function SingleMovie({ movie }) {
+function SingleMovie({ movie, from }) {
     const {
         title,
         poster_path,
@@ -23,6 +23,7 @@ function SingleMovie({ movie }) {
           : "no Ganres";
       const description = overview ? overview : "no overview ";
     
+      console.log(from)
 
     return (
       <div className={styles.wrapper}>
@@ -44,8 +45,8 @@ function SingleMovie({ movie }) {
 
         <div className={styles.additional_box}>
             <ul className={styles.list}>
-              <li className={styles.item}><Link className={styles.link} to='cast'>Cast</Link></li>
-              <li className={styles.item}><Link className={styles.link} to='reviews'>Reviews</Link></li>
+              <li className={styles.item}><Link className={styles.link} to='cast' state={from}>Cast</Link></li>
+              <li className={styles.item}><Link className={styles.link} to='reviews' state={from}>Reviews</Link></li>
             </ul>    
             <Outlet />
           </div>
